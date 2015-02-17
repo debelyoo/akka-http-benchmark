@@ -13,7 +13,7 @@ class HttpServer(h: Option[String] = None, p: Option[Int] = None)(implicit syste
   private val port = p.getOrElse(conf.getInt("server.port"))
 
   private def handleGetRequestSynch: HttpRequest => HttpResponse = {
-    case HttpRequest(GET, Uri.Path("/ping"), _, _, _)  => HttpResponse(200, entity = "PONG!")
+    case HttpRequest(GET, Uri.Path("/plaintext"), _, _, _)  => HttpResponse(200, entity = "PONG!")
     case _: HttpRequest                                => HttpResponse(404, entity = "Unknown resource!")
   }
 
